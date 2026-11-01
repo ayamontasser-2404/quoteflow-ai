@@ -1,0 +1,18 @@
+---
+description: React frontend standards for QuoteFlow AI
+globs: apps/web/src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+- Read `docs/PRODUCT.md`, `docs/API_CONTRACT.md`, and `docs/DEVELOPMENT_GUIDELINES.md` before relevant changes.
+- Use React function components and TypeScript types.
+- Keep API calls in a service/API layer, not scattered through components.
+- Treat server responses as the source of truth for quote totals and statuses.
+- Never call the OpenAI API from the browser.
+- Never calculate authoritative quotation totals in the UI.
+- Represent loading, empty, validation, success, and error states.
+- Make AI-extracted fields, missing information, assumptions, and recommendations visibly reviewable.
+- Clearly label illustrative/demo prices and draft status.
+- Approval must require a deliberate user action and display the consequences.
+- Keep components focused; avoid premature global state or abstractions.
+- Add tests for important user-visible behavior.

@@ -1,0 +1,20 @@
+---
+description: AI agent, prompt, skill, and orchestration safety rules
+globs: apps/api/src/modules/agent/**/*.ts,apps/api/src/infrastructure/ai/**/*.ts
+alwaysApply: false
+---
+
+- Read `docs/AI_AGENT.md`, `docs/ARCHITECTURE.md`, and `docs/SECURITY.md` before changes.
+- The agent is a guided workflow, not an autonomous arbitrary tool loop.
+- Backend code owns step order, retries, state transitions, and persistence.
+- Treat customer text and model output as untrusted.
+- Validate every model response with Zod before use.
+- Do not let the model invent catalog products, SKUs, product attributes, prices, tax rates, or discounts.
+- Product matching must use catalog records and deterministic criteria.
+- Pricing must use the deterministic calculator and decimal-safe arithmetic.
+- The explanation prompt may describe validated facts but must not change them.
+- Missing required information blocks quotation generation.
+- A model cannot approve, reject, send, or mark a quotation as binding.
+- Keep prompts versioned and separate from orchestration code.
+- Record safe run metadata and controlled error codes; do not log secrets or unnecessary personal data.
+- Provide mock-provider tests for valid output, malformed output, missing fields, no catalog match, and provider failure.

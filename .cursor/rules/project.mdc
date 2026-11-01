@@ -1,0 +1,34 @@
+---
+description: QuoteFlow AI product-wide source of truth and engineering constraints
+alwaysApply: true
+---
+
+# QuoteFlow AI — Project Rule
+
+Before making changes, read `README.md` and the relevant files in `docs/`.
+
+## Product constraints
+- MVP supports solar installation intake only. Heating is future scope.
+- Build a guided single-agent workflow orchestrated by backend code.
+- AI output is advisory and creates drafts only.
+- Product identity/specifications/prices must come from the application catalog.
+- All monetary calculations are deterministic application logic.
+- Human approval is mandatory; never auto-approve or auto-send a quotation.
+- Unknown customer requirements must remain unknown or be asked about, not fabricated.
+
+## Change process
+1. Inspect the existing code and relevant documentation.
+2. State a short implementation plan and files expected to change.
+3. Implement only the requested task; do not broaden scope.
+4. Add/update tests.
+5. Update documentation/API contracts when behavior or decisions change.
+6. Report changed files, commands run, test/build results, and known limitations.
+7. If a request conflicts with docs, stop and explain the conflict; propose a document change before coding.
+
+## General engineering
+- TypeScript strict mode; avoid `any`.
+- Validate untrusted inputs and external outputs.
+- Keep secrets server-side.
+- Prefer simple, maintainable solutions over speculative abstractions.
+- Do not add dependencies without explaining why they are needed.
+- Never claim tests, builds, or deployment succeeded unless actually run.

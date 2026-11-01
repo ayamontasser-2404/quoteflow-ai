@@ -1,0 +1,19 @@
+---
+description: Backend standards for the Express API
+globs: apps/api/**/*.ts
+alwaysApply: false
+---
+
+- Read `docs/ARCHITECTURE.md`, `docs/API_CONTRACT.md`, `docs/DATA_MODEL.md`, `docs/DEVELOPMENT_GUIDELINES.md`, and `docs/SECURITY.md` before relevant changes.
+- Organize code by domain module; keep routes/controllers thin.
+- Validate route params, query strings, and bodies with Zod.
+- Keep domain logic in services, not route handlers.
+- Map known errors centrally to stable public error codes; never expose stack traces.
+- Keep OpenAI SDK calls behind an infrastructure adapter.
+- Provide a mock AI provider for tests; tests must not require network/API keys.
+- Never calculate authoritative prices with an LLM or JavaScript floating-point arithmetic.
+- Use configured currency/tax policy and decimal-safe money arithmetic.
+- Snapshot product name/SKU/unit/price on quotation items.
+- Agent-generated quotations start as DRAFT/PENDING_REVIEW.
+- Approval/rejection must be a separate authorized use case.
+- Add tests for success, validation failure, not-found, conflict, and provider failure as appropriate.
